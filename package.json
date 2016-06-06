@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "name": "octicons_gem",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "update": "npm install && rm -rf lib/svg && cp -rf node_modules/octicons/build/svg lib",
+    "test": "rake"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/primer/octicons_gem.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/primer/octicons_gem/issues"
+  },
+  "homepage": "https://github.com/primer/octicons_gem#readme",
+  "dependencies": {
+    "octicons": "^4.0.0"
+  }
+}
