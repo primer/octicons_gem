@@ -34,6 +34,8 @@ The `Octicon` class takes a hash of arguments to construct the icon you want
 * `:size` - This will help output 16 or 32 sized icons. You can also pass an Integer to this, for other sizes
 * `:width`, `:height` - width and height are exact sizes, if you have an odd shape like the gist logo, pass in exact dimensions
 
+Everything else passed in through the options hash will be treated as html attributes and added to the svg tag.
+
 #### Methods
 
 ##### `to_svg`
