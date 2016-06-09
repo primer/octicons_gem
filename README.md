@@ -31,7 +31,7 @@ The `Octicon` class takes a hash of arguments to construct the icon you want
 #### Options
 
 * `:symbol` _(required)_ - This is the name of the octicon you want to use. For example `alert`. [Full list of icons][octicons-docs]
-* `:size` - This will help output 16 or 32 sized icons. You can also pass an Integer to this, for other sizes
+* `:size` - This will help output 16 or 32 sized icons. if you pass "large" the icon will be double the size. You can also pass an number and the icon will be scaled properly.
 * `:width`, `:height` - width and height are exact sizes, if you have an odd shape like the gist logo, pass in exact dimensions
 
 Everything else passed in through the options hash will be treated as html attributes and added to the svg tag.
