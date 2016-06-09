@@ -70,24 +70,24 @@ module Octicons
 
       # When size is an integer
       elsif @options[:size].is_a?(Integer) || !!(@options[:size] =~ /\A[0-9]+\z/)
-        size[:width] = (@options[:size].to_i * @width) / @height
+        size[:width]  = calculate_width(@options[:size])
         size[:height] = @options[:size]
 
         # Specific size
-      elsif !@options[:width].nil? && !@options[:height].nil?
-        size[:width] = @options[:width]
-        size[:height] = @options[:height]
-
-      elsif !@options[:height].nil?
-        size[:width] = (@options[:height].to_i * @width) / @height
-        size[:height] = @options[:height]
-
-      elsif !@options[:width].nil?
-        size[:width] = @options[:width]
-        size[:height] = (@options[:width].to_i * @height) / @width
+      elsif !@options[:width].nil? || !@options[:height].nil?
+        size[:width]  = @options[:width].nil?  ? calculate_width(@options[:height]) : @options[:width]
+        size[:height] = @options[:height].nil? ? calculate_height(@options[:width]) : @options[:height]
       end
 
       size
+    end
+
+    def calculate_width(height)
+      (height.to_i * @width) / @height
+    end
+
+    def calculate_height(width)
+      (width.to_i * @height) / @width
     end
   end
 end
