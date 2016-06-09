@@ -5,5 +5,6 @@ rvm:
 deploy:
   provider: rubygems
   api_key: ${RUBYGEMS_API_KEY}
+  gem: octicons
   on:
     tags: true
