@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "octicons_gem",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "scripts": {
     "update": "npm install && rm -rf lib/svg && cp -rf node_modules/octicons/build/svg lib",
