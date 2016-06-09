@@ -16,9 +16,9 @@ describe Octicons::Octicon do
 
   describe "html_attributes" do
     it "includes other html attributes" do
-      icon = octicon(:symbol => "x", :'aria-label' => "Close", :disabled => "true")
+      icon = octicon(:symbol => "x", :foo => "bar", :disabled => "true")
       assert_includes icon.to_svg, "disabled=\"true\""
-      assert_includes icon.to_svg, "aria-label=\"Close\""
+      assert_includes icon.to_svg, "foo=\"bar\""
     end
   end
 
