@@ -7,20 +7,26 @@ describe Octicons::Octicon do
     end
   end
 
-  it "includes classes passed in" do
-    icon = octicon(:symbol => "x", :class => "text-closed")
-    assert_includes icon.to_svg, "class=\"octicon octicon-x text-closed\""
+  describe "viewBox" do
+    it "always has a viewBox" do
+      icon = octicon(:symbol => "x")
+      assert_includes icon.to_svg, "viewBox=\"0 0 12 16\""
+    end
   end
 
-  it "includes other html attributes" do
-    icon = octicon(:symbol => "x", :'aria-label' => "Close", :disabled => "true")
-    assert_includes icon.to_svg, "disabled=\"true\""
-    assert_includes icon.to_svg, "aria-label=\"Close\""
+  describe "html_attributes" do
+    it "includes other html attributes" do
+      icon = octicon(:symbol => "x", :'aria-label' => "Close", :disabled => "true")
+      assert_includes icon.to_svg, "disabled=\"true\""
+      assert_includes icon.to_svg, "aria-label=\"Close\""
+    end
   end
 
-  it "always has a viewBox" do
-    icon = octicon(:symbol => "x")
-    assert_includes icon.to_svg, "viewBox=\"0 0 12 16\""
+  describe "classes" do
+    it "includes classes passed in" do
+      icon = octicon(:symbol => "x", :class => "text-closed")
+      assert_includes icon.to_svg, "class=\"octicon octicon-x text-closed\""
+    end
   end
 
   describe "size" do
@@ -41,6 +47,36 @@ describe Octicons::Octicon do
       assert_includes icon.to_svg, "width=\"45\""
     end
 
+    it "converts number string size to integer" do
+      icon = octicon(:symbol => "x", :size => "60")
+      assert_includes icon.to_svg, "height=\"60\""
+      assert_includes icon.to_svg, "width=\"45\""
+    end
+
+    it "converts number string height to integer" do
+      icon = octicon(:symbol => "x", :height => "60")
+      assert_includes icon.to_svg, "height=\"60\""
+      assert_includes icon.to_svg, "width=\"45\""
+    end
+
+    it "converts number height to integer" do
+      icon = octicon(:symbol => "x", :height => 60)
+      assert_includes icon.to_svg, "height=\"60\""
+      assert_includes icon.to_svg, "width=\"45\""
+    end
+
+    it "converts number string width to integer" do
+      icon = octicon(:symbol => "x", :width => "45")
+      assert_includes icon.to_svg, "height=\"60\""
+      assert_includes icon.to_svg, "width=\"45\""
+    end
+
+    it "converts number width to integer" do
+      icon = octicon(:symbol => "x", :width => 45)
+      assert_includes icon.to_svg, "height=\"60\""
+      assert_includes icon.to_svg, "width=\"45\""
+    end
+
     it "with height and width passed in" do
       icon = octicon(:symbol => "x", :width => 60, :height => 60)
       assert_includes icon.to_svg, "width=\"60\""
@@ -48,7 +84,7 @@ describe Octicons::Octicon do
     end
   end
 
-  describe "accessibility" do
+  describe "a11y" do
     it "includes attributes" do
       icon = octicon(:symbol => "x", :'aria-label' => "Close")
       assert_includes icon.to_svg, "role=\"img\""
