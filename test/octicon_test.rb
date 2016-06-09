@@ -18,18 +18,18 @@ describe Octicons::Octicon do
     assert_includes icon.to_svg, "aria-label=\"Close\""
   end
 
-  it "always has width and height" do
-    icon = octicon(:symbol => "x")
-    assert_includes icon.to_svg, "height=\"16\""
-    assert_includes icon.to_svg, "width=\"12\""
-  end
-
   it "always has a viewBox" do
     icon = octicon(:symbol => "x")
     assert_includes icon.to_svg, "viewBox=\"0 0 12 16\""
   end
 
   describe "size" do
+    it "always has width and height" do
+      icon = octicon(:symbol => "x")
+      assert_includes icon.to_svg, "height=\"16\""
+      assert_includes icon.to_svg, "width=\"12\""
+    end
+
     it "correctly using the word large" do
       icon = octicon(:symbol => "x", :size => "large")
       assert_includes icon.to_svg, "height=\"32\""
