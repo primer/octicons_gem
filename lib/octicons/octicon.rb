@@ -7,66 +7,79 @@ module Octicons
         @path = symbol[:path]
         @width = symbol[:width]
         @height = symbol[:height]
-        @html_options = @options.reject { |d| [:symbol, :tag, :size].include? d }
 
-        css_class
-        compute_size
-        accessible
+        # create html_options from options, except for a few
+        @html_options = @options.reject { |d| [:symbol, :size].include? d }
+        @html_options.merge!({
+          :class => classes,
+          :viewBox => viewbox,
+          :version => "1.1"
+        })
+        @html_options.merge!(size)
+        @html_options.merge!(a11y)
       else
         raise "Couldn't find octicon symbol for #{options[:symbol].inspect}"
       end
     end
 
     def to_svg
-      "<svg #{html_attrs}>#{@path}</svg>"
+      "<svg #{html_attributes}>#{@path}</svg>"
     end
 
     private
 
-    def html_attrs
+    def html_attributes
       attrs = ""
       @html_options.each { |attr, value| attrs += "#{attr}=\"#{value}\" " }
       attrs.strip
     end
 
     # add some accessibility features to svg
-    def accessible
-      @html_options[:version] = "1.1"
+    def a11y
+      accessible = {}
 
-      if @html_options[:'aria-label'].nil?
-        @html_options[:'aria-hidden'] = "true"
+      if @options[:'aria-label'].nil?
+        accessible[:'aria-hidden'] = "true"
       else
-        @html_options[:role] = "img"
+        accessible[:role] = "img"
       end
+
+      accessible
     end
 
     # prepare the octicon class
-    def css_class
-      @html_options[:class] = "octicon octicon-#{@options[:symbol]} #{@options[:class]} ".strip
+    def classes
+      "octicon octicon-#{@options[:symbol]} #{@options[:class]} ".strip
+    end
+
+    def viewbox
+      "0 0 #{@width} #{@height}"
     end
 
     # determine the height and width of the octicon based on :size option
-    def compute_size
+    def size
+      size = {
+        :width => @width,
+        :height => @height
+      }
 
-      @html_options[:viewBox] = "0 0 #{@width} #{@height}"
-
+      # Specific size
       if !@options[:width].nil? && !@options[:height].nil?
-        @html_options[:width] = @options[:width]
-        @html_options[:height] = @options[:height]
+        size[:width] = @options[:width]
+        size[:height] = @options[:height]
 
+      # When size is "large"
       elsif @options[:size] == "large"
-        @html_options[:width] = 2 * @width
-        @html_options[:height] = 2 * @height
+        size[:width] = 2 * @width
+        size[:height] = 2 * @height
 
+      # When size is an integer
       elsif @options[:size].is_a? Integer
-        @html_options[:width] = (@options[:size] * @width) / @height
-        @html_options[:height] = @options[:size]
-
-      else
-        @html_options[:width] = @width
-        @html_options[:height] = @height
-
+        size[:width] = (@options[:size] * @width) / @height
+        size[:height] = @options[:size]
       end
+
+      size
     end
   end
 end
