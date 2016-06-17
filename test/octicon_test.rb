@@ -44,23 +44,6 @@ describe Octicons::Octicon do
       assert_includes icon.to_svg, "width=\"12\""
     end
 
-    it "correctly using the word large" do
-      icon = octicon(:symbol => "x", :size => "large")
-      assert_includes icon.to_svg, "height=\"32\""
-    end
-
-    it "calculated with Integer" do
-      icon = octicon(:symbol => "x", :size => 60)
-      assert_includes icon.to_svg, "height=\"60\""
-      assert_includes icon.to_svg, "width=\"45\""
-    end
-
-    it "converts number string size to integer" do
-      icon = octicon(:symbol => "x", :size => "60")
-      assert_includes icon.to_svg, "height=\"60\""
-      assert_includes icon.to_svg, "width=\"45\""
-    end
-
     it "converts number string height to integer" do
       icon = octicon(:symbol => "x", :height => "60")
       assert_includes icon.to_svg, "height=\"60\""
