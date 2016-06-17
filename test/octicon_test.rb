@@ -7,6 +7,28 @@ describe Octicons::Octicon do
     end
   end
 
+  it "gets keywords for the icon" do
+    icon = octicon(:symbol => "x")
+    assert_equal ["remove", "close", "delete"], icon.keywords
+  end
+
+  describe "codepoints" do
+    it "computes the correct decimal codepoint" do
+      icon = octicon(:symbol => "alert")
+      assert_equal 61485, icon.decimal
+    end
+
+    it "computes the correct hexadecimal codepoint" do
+      icon = octicon(:symbol => "alert")
+      assert_equal "f02d", icon.hexadecimal
+    end
+
+    it "finds the character code" do
+      icon = octicon(:symbol => "alert")
+      assert_equal "", icon.character
+    end
+  end
+
   describe "viewBox" do
     it "always has a viewBox" do
       icon = octicon(:symbol => "x")

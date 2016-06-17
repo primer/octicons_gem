@@ -26,6 +26,26 @@ module Octicons
       "<svg #{html_attributes}>#{@path}</svg>"
     end
 
+    # Returns an array of keywords similar to the icon
+    def keywords
+      Octicons::KEYWORDS[@options[:symbol]]["keywords"]
+    end
+
+    # Returns the decimal codepoint of the character
+    def decimal
+      Octicons::CODEPOINTS[@options[:symbol]]
+    end
+
+    # Returns the hexidecimal version of the character
+    def hexadecimal
+      decimal.to_s(16)
+    end
+
+    # Returns the unicode character
+    def character
+      [decimal].pack("U")
+    end
+
     private
 
     def html_attributes
