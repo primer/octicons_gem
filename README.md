@@ -43,6 +43,16 @@ If both `:width, :height` are passed into the options hash, then the icon will b
 
 Once initialized, you can read a few properties from the icon.
 
+##### `symbol`
+
+Returns the string of the symbol name
+
+```rb
+icon = Octicons::Octicon.new("x")
+icon.symbol
+# "x"
+```
+
 ##### `path`
 
 Path returns the string representation of the path of the icon.
