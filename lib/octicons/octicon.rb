@@ -1,17 +1,19 @@
 module Octicons
   class Octicon
 
-    attr_reader :path, :html_options, :width, :height
+    attr_reader :path, :html_options, :width, :height, :symbol
 
-    def initialize(options)
-      @options = options
-      if symbol = Octicons::OCTICON_SYMBOLS[@options[:symbol]]
-        @path = symbol[:path]
-        @width = symbol[:width]
-        @height = symbol[:height]
+    def initialize(symbol, options = {})
+      @symbol = symbol.to_s
+      if octicon = Octicons::OCTICON_SYMBOLS[@symbol]
+
+        @options = options
+        @path = octicon[:path]
+        @width = octicon[:width]
+        @height = octicon[:height]
 
         # create html_options from options, except for a few
-        @html_options = @options.reject { |d| [:symbol, :size].include? d }
+        @html_options = @options.reject { |d| [:size].include? d }
         @html_options.merge!({
           :class   => classes,
           :viewBox => viewbox,
@@ -20,7 +22,7 @@ module Octicons
         @html_options.merge!(size)
         @html_options.merge!(a11y)
       else
-        raise "Couldn't find octicon symbol for #{options[:symbol].inspect}"
+        raise "Couldn't find octicon symbol for #{@symbol.inspect}"
       end
     end
 
@@ -51,7 +53,7 @@ module Octicons
 
     # prepare the octicon class
     def classes
-      "octicon octicon-#{@options[:symbol]} #{@options[:class]} ".strip
+      "octicon octicon-#{@symbol} #{@options[:class]} ".strip
     end
 
     def viewbox

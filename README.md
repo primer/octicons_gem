@@ -19,18 +19,21 @@ Then `bundle install`.
 
 ```rb
 require 'octicons'
-icon = Octicons::Octicon.new( :symbol => "x" )
+icon = Octicons::Octicon.new("x")
 icon.to_svg
 # <svg class="octicon octicon-x" viewBox="0 0 16 16" width="16" height="16" version="1.1" "aria-hidden"="true"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
 ```
 
 ## Documentation
 
-The `Octicon` class takes a hash of arguments to construct the icon you want
+The `Octicon` class takes two arguments. The first is the symbol of the icon, and the second is a hash of arguments representing html attributes
+
+#### `symbol` _(required)_
+
+This is the name of the octicon you want to use. For example `alert`. [Full list of icons][octicons-docs]
 
 #### Options
 
-* `:symbol` _(required)_ - This is the name of the octicon you want to use. For example `alert`. [Full list of icons][octicons-docs]
 * `:size` - This will help output 16 or 32 sized icons. if you pass "large" the icon will be double the size. You can also pass an number and the icon will be scaled properly.
 * `:width`, `:height` - width and height are exact sizes, if you have an odd shape like the gist logo, pass in exact dimensions
 
@@ -43,7 +46,7 @@ Everything else passed in through the options hash will be treated as html attri
 Returns a string of the svg tag
 
 ```rb
-icon = Octicons::Octicon.new( :symbol => "x" )
+icon = Octicons::Octicon.new("x")
 icon.to_svg
 # <svg class="octicon octicon-x" viewBox="0 0 16 16" width="16" height="16" version="1.1" "aria-hidden"="true"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
 ```

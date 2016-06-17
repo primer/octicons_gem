@@ -1,6 +1,7 @@
 # HEAD
 
 - Adding: attr_reader for `:path, :html_options, :width, :height`
+- Deprecate: the use of `:symbol`, instead the first argument is the symbol
 
 # 1.1.0
 
