@@ -36,6 +36,38 @@ The `Octicon` class takes a hash of arguments to construct the icon you want
 
 Everything else passed in through the options hash will be treated as html attributes and added to the svg tag.
 
+#### Attributes
+
+Once initialized, you can read a few properties from the icon.
+
+##### `path`
+
+Path returns the string representation of the path of the icon.
+
+```rb
+icon = Octicons::Octicon.new( :symbol => "x" )
+icon.path
+# <path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path>
+```
+
+##### `html_options`
+
+This is a hash of all the `html_options` that will be added to the output tag.
+
+```rb
+icon = Octicons::Octicon.new( :symbol => "x" )
+icon.html_options
+# {:class=>"octicon octicon-x", :viewBox=>"0 0 12 16", :version=>"1.1", :width=>12, :height=>16, :"aria-hidden"=>"true"}
+```
+
+##### `width`
+
+Width is the icon's true width. Based on the svg view box width. _Note, this doesn't change if you scale it up with size options, it only is the natural width of the icon_
+
+##### `height`
+
+Height is the icon's true height. Based on the svg view box height. _Note, this doesn't change if you scale it up with size options, it only is the natural height of the icon_
+
 #### Methods
 
 ##### `to_svg`
@@ -46,6 +78,46 @@ Returns a string of the svg tag
 icon = Octicons::Octicon.new( :symbol => "x" )
 icon.to_svg
 # <svg class="octicon octicon-x" viewBox="0 0 16 16" width="16" height="16" version="1.1" "aria-hidden"="true"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+```
+
+##### `keywords`
+
+Returns an array of keywords for the icon. The data [comes from the octicons repository](https://github.com/primer/octicons/blob/master/lib/keywords.json). Consider contributing more aliases for the icons.
+
+```rb
+icon = Octicons::Octicon.new( :symbol => "x" )
+icon.keywords
+# ["remove", "close", "delete"]
+```
+
+##### `decimal`
+
+Returns an `Integer` representing the codepoint of the character within the font file.
+
+```rb
+icon = Octicons::Octicon.new( :symbol => "alert" )
+icon.decimal
+# 61485
+```
+
+##### `hexadecimal`
+
+Returns an `String` representing the hexadecimal codepoint of the character within the font file.
+
+```rb
+icon = Octicons::Octicon.new( :symbol => "alert" )
+icon.hexadecimal
+# "f02d"
+```
+
+##### `character`
+
+Returns the unicode character of the icon. When placing this with the octicons font turned on, you'll see the icon.
+
+```rb
+icon = Octicons::Octicon.new( :symbol => "alert" )
+icon.character
+# ""
 ```
 
 ## License
