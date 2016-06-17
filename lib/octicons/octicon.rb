@@ -11,7 +11,7 @@ module Octicons
         @height = symbol[:height]
 
         # create html_options from options, except for a few
-        @html_options = @options.reject { |d| [:symbol, :size].include? d }
+        @html_options = @options.reject { |d| [:symbol].include? d }
         @html_options.merge!({
           :class   => classes,
           :viewBox => viewbox,
@@ -86,18 +86,8 @@ module Octicons
         :height => @height
       }
 
-      # When size is "large"
-      if @options[:size] == "large"
-        size[:width] = 2 * @width
-        size[:height] = 2 * @height
-
-      # When size is an integer
-      elsif @options[:size].is_a?(Integer) || !!(@options[:size] =~ /\A[0-9]+\z/)
-        size[:width]  = calculate_width(@options[:size])
-        size[:height] = @options[:size]
-
-        # Specific size
-      elsif !@options[:width].nil? || !@options[:height].nil?
+      # Specific size
+      unless @options[:width].nil? && @options[:height].nil?
         size[:width]  = @options[:width].nil?  ? calculate_width(@options[:height]) : @options[:width]
         size[:height] = @options[:height].nil? ? calculate_height(@options[:width]) : @options[:height]
       end
