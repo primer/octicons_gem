@@ -24,6 +24,7 @@ module Octicons
       end
     end
 
+    # Returns an string representing a <svg> tag
     def to_svg
       "<svg #{html_attributes}>#{@path}</svg>"
     end
