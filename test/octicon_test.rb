@@ -17,6 +17,11 @@ describe Octicons::Octicon do
     assert icon
   end
 
+  it "gets keywords for the icon" do
+    icon = octicon("x")
+    assert_equal ["remove", "close", "delete"], icon.keywords
+  end
+
   it "the attributes are readable" do
     icon = octicon("x")
     assert icon.path
@@ -24,6 +29,23 @@ describe Octicons::Octicon do
     assert_equal "x", icon.symbol
     assert_equal 12, icon.width
     assert_equal 16, icon.height
+  end
+
+  describe "codepoints" do
+    it "computes the correct decimal codepoint" do
+      icon = octicon("alert")
+      assert_equal 61485, icon.decimal
+    end
+
+    it "computes the correct hexadecimal codepoint" do
+      icon = octicon("alert")
+      assert_equal "f02d", icon.hexadecimal
+    end
+
+    it "finds the character code" do
+      icon = octicon("alert")
+      assert_equal "", icon.character
+    end
   end
 
   describe "viewBox" do
@@ -53,23 +75,6 @@ describe Octicons::Octicon do
       icon = octicon("x")
       assert_includes icon.to_svg, "height=\"16\""
       assert_includes icon.to_svg, "width=\"12\""
-    end
-
-    it "correctly using the word large" do
-      icon = octicon("x", :size => "large")
-      assert_includes icon.to_svg, "height=\"32\""
-    end
-
-    it "calculated with Integer" do
-      icon = octicon("x", :size => 60)
-      assert_includes icon.to_svg, "height=\"60\""
-      assert_includes icon.to_svg, "width=\"45\""
-    end
-
-    it "converts number string size to integer" do
-      icon = octicon("x", :size => "60")
-      assert_includes icon.to_svg, "height=\"60\""
-      assert_includes icon.to_svg, "width=\"45\""
     end
 
     it "converts number string height to integer" do
