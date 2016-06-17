@@ -1,6 +1,6 @@
 # HEAD
 
-- Adding: attr_reader for `:path, :html_options, :width, :height`
+- Adding: attr_reader for `:path, :options, :width, :height`
 - Adding: `keywords.json` and `codepoints.json` methods to the octicon object. Making them available via the api
 - Deprecating: the use of `:size` for "large" or a number, instead use `:height`
 - Deprecate: the use of `:symbol`, instead the first argument is the symbol

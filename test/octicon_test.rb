@@ -25,7 +25,7 @@ describe Octicons::Octicon do
   it "the attributes are readable" do
     icon = octicon("x")
     assert icon.path
-    assert icon.html_options
+    assert icon.options
     assert_equal "x", icon.symbol
     assert_equal 12, icon.width
     assert_equal 16, icon.height
