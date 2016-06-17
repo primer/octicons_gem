@@ -7,6 +7,14 @@ describe Octicons::Octicon do
     end
   end
 
+  it "the attributes are readable" do
+    icon = octicon(:symbol => "x")
+    assert icon.path
+    assert icon.html_options
+    assert_equal 12, icon.width
+    assert_equal 16, icon.height
+  end
+
   describe "viewBox" do
     it "always has a viewBox" do
       icon = octicon(:symbol => "x")
