@@ -1,9 +1,11 @@
 # HEAD
 
-- Adding: attr_reader for `:path, :options, :width, :height`
-- Adding: `keywords.json` and `codepoints.json` methods to the octicon object. Making them available via the api
-- Deprecating: the use of `:size` for "large" or a number, instead use `:height`
-- Deprecate: the use of `:symbol`, instead the first argument is the symbol
+# 2.0.0
+
+- Adding: attr_reader for `:path, :options, :width, :height` https://github.com/primer/octicons_gem/pull/6
+- Adding: `keywords.json` and `codepoints.json` methods to the octicon object. Making them available via the api https://github.com/primer/octicons_gem/pull/7
+- Deprecating: the use of `:size` for "large" or a number, instead use `:height` https://github.com/primer/octicons_gem/pull/8
+- Deprecate: the use of `:symbol`, instead the first argument is the symbol https://github.com/primer/octicons_gem/pull/9
 
 # 1.1.0
 
