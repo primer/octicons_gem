@@ -12,6 +12,14 @@ describe Octicons::Octicon do
     assert_equal ["remove", "close", "delete"], icon.keywords
   end
 
+  it "the attributes are readable" do
+    icon = octicon(:symbol => "x")
+    assert icon.path
+    assert icon.html_options
+    assert_equal 12, icon.width
+    assert_equal 16, icon.height
+  end
+
   describe "codepoints" do
     it "computes the correct decimal codepoint" do
       icon = octicon(:symbol => "alert")

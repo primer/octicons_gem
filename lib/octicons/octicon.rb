@@ -1,6 +1,8 @@
 module Octicons
   class Octicon
 
+    attr_reader :path, :html_options, :width, :height
+
     def initialize(options)
       @options = options
       if symbol = Octicons::OCTICON_SYMBOLS[@options[:symbol]]
