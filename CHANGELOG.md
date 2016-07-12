@@ -1,5 +1,9 @@
 # HEAD
 
+# 2.1.0
+
+- Updating to new version of [octicons@4.3.0](https://github.com/primer/octicons/blob/master/CHANGELOG.md#430)
+
 # 2.0.0
 
 - Adding: attr_reader for `:path, :options, :width, :height` https://github.com/primer/octicons_gem/pull/6

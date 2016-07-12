@@ -6,7 +6,8 @@
   "scripts": {
     "data": "cp -f node_modules/octicons/lib/keywords.json lib && cp -f node_modules/octicons/lib/font/codepoints.json lib",
     "svg": "rm -rf lib/svg && cp -rf node_modules/octicons/build/svg lib",
-    "update": "npm install && npm run svg && npm run data",
+    "update": "npm install octicons && npm run svg && npm run data",
+    "ship": "gem build octicons_gem.gemspec && gem push octicons_gem-*.gem",
     "test": "rake"
   },
   "repository": {
@@ -20,6 +21,6 @@
   },
   "homepage": "https://github.com/primer/octicons_gem#readme",
   "dependencies": {
-    "octicons": "4.2.0"
+    "octicons": "*"
   }
 }
