@@ -7,7 +7,7 @@
     "data": "cp -f node_modules/octicons/lib/keywords.json lib && cp -f node_modules/octicons/lib/font/codepoints.json lib",
     "svg": "rm -rf lib/svg && cp -rf node_modules/octicons/build/svg lib",
     "update": "npm install octicons && npm run svg && npm run data",
-    "ship": "gem build octicons_gem.gemspec && gem push octicons_gem-*.gem",
+    "ship": "gem build octicons.gemspec && gem push octicons-*.gem",
     "test": "rake"
   },
   "repository": {
