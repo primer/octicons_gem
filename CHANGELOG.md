@@ -1,5 +1,13 @@
 # HEAD
 
+# 3.0.0
+
+- Adding `to_svg_use` which will output a `<svg><use>` tag for svg spritesheets
+- Updating to new version of [octicons@5.0.0](https://github.com/primer/octicons/blob/master/CHANGELOG.md#500)
+- Removed: api endpoints for `decimal`, `hexadecimal`, and `character`
+- Removed: svg directory from `/lib/` this isn't necessary anymore with the updated `data.json` from 5.0.0
+- Removed: `Octicons::KEYWORDS` and `Octicons::CODEPOINTS`, Codepoints is deprecated and Keywords can be accessed via `Octicons::OCTICON_SYMBOLS`
+
 # 2.1.0
 
 - Updating to new version of [octicons@4.3.0](https://github.com/primer/octicons/blob/master/CHANGELOG.md#430)

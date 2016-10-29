@@ -4,8 +4,8 @@
   "version": "2.1.0",
   "description": "",
   "scripts": {
-    "data": "cp -f node_modules/octicons/lib/keywords.json lib && cp -f node_modules/octicons/lib/font/codepoints.json lib",
-    "svg": "rm -rf lib/svg && cp -rf node_modules/octicons/build/svg lib",
+    "data": "cp -f node_modules/octicons/build/data.json lib",
+    "svg": "cp -f node_modules/octicons/build/sprite.octicons.svg lib",
     "update": "npm install octicons && npm run svg && npm run data",
     "ship": "gem build octicons.gemspec && gem push octicons-*.gem",
     "test": "rake"

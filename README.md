@@ -103,36 +103,6 @@ icon.keywords
 # ["remove", "close", "delete"]
 ```
 
-##### `decimal`
-
-Returns an `Integer` representing the codepoint of the character within the font file.
-
-```rb
-icon = Octicons::Octicon.new("alert")
-icon.decimal
-# 61485
-```
-
-##### `hexadecimal`
-
-Returns an `String` representing the hexadecimal codepoint of the character within the font file.
-
-```rb
-icon = Octicons::Octicon.new("alert")
-icon.hexadecimal
-# "f02d"
-```
-
-##### `character`
-
-Returns the unicode character of the icon. When placing this with the octicons font turned on, you'll see the icon.
-
-```rb
-icon = Octicons::Octicon.new("alert")
-icon.character
-# ""
-```
-
 ## Publishing
 
 If you have access to publish this repository, these are the steps to publishing. If you need access, contact [#design-systems](https://github.slack.com/archives/design-systems).

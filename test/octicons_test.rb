@@ -2,22 +2,18 @@ require_relative "./helper"
 
 describe Octicons do
 
-  def setup
-    @icons_total = Dir[Octicons::OCTICONS_SVG_PATH].length
-  end
-
   it "loads all icons on initialization" do
+    x_icon = Octicons::OCTICON_SYMBOLS["x"]
     refute_equal 0, Octicons::OCTICON_SYMBOLS.length
-    assert_equal @icons_total, Octicons::OCTICON_SYMBOLS.length
+    assert x_icon["keywords"]
+    assert x_icon["path"]
+    assert x_icon["height"]
+    assert x_icon["width"]
   end
 
-  it "loads all keywords" do
-    refute_equal 0, Octicons::KEYWORDS.length
-    assert_equal @icons_total, Octicons::KEYWORDS.length
-  end
-
-  it "loads all codepoints" do
-    refute_equal 0, Octicons::CODEPOINTS.length
-    assert_equal @icons_total, Octicons::CODEPOINTS.length
+  it "loads the spritesheet" do
+    assert_includes Octicons.sprite_sheet, "<symbol"
+    assert_includes Octicons.sprite_sheet, "<svg"
+    assert_includes Octicons.sprite_sheet, "xmlns=\"http://www.w3.org/2000/svg\" style=\"width:0;height:0;visibility:hidden;\""
   end
 end

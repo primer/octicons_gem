@@ -1,15 +1,17 @@
 module Octicons
   class Octicon
 
-    attr_reader :path, :options, :width, :height, :symbol
+    attr_reader :path, :options, :width, :height, :symbol, :keywords
 
     def initialize(symbol, options = {})
       @symbol = symbol.to_s
       if octicon = Octicons::OCTICON_SYMBOLS[@symbol]
 
-        @path = octicon[:path]
-        @width = octicon[:width]
-        @height = octicon[:height]
+        @path = octicon["path"]
+        @width = octicon["width"].to_i
+        @height = octicon["height"].to_i
+
+        @keywords = octicon["keywords"]
 
         @options = options
         @options.merge!({
@@ -29,24 +31,10 @@ module Octicons
       "<svg #{html_attributes}>#{@path}</svg>"
     end
 
-    # Returns an array of keywords similar to the icon
-    def keywords
-      Octicons::KEYWORDS[@symbol]["keywords"]
-    end
-
-    # Returns the decimal codepoint of the character
-    def decimal
-      Octicons::CODEPOINTS[@symbol]
-    end
-
-    # Returns the hexidecimal version of the character
-    def hexadecimal
-      decimal.to_s(16)
-    end
-
-    # Returns the unicode character
-    def character
-      [decimal].pack("U")
+    # Returns a string representing a <svg> use tag
+    # For use with spritesheets
+    def to_svg_use
+      "<svg #{html_attributes}><use xlink:href=\"##{@symbol}\" /></svg>"
     end
 
     private

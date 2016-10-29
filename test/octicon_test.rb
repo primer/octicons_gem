@@ -31,21 +31,9 @@ describe Octicons::Octicon do
     assert_equal 16, icon.height
   end
 
-  describe "codepoints" do
-    it "computes the correct decimal codepoint" do
-      icon = octicon("alert")
-      assert_equal 61485, icon.decimal
-    end
-
-    it "computes the correct hexadecimal codepoint" do
-      icon = octicon("alert")
-      assert_equal "f02d", icon.hexadecimal
-    end
-
-    it "finds the character code" do
-      icon = octicon("alert")
-      assert_equal "", icon.character
-    end
+  it "has proper use format" do
+    icon = octicon("x")
+    assert_includes icon.to_svg_use, "<use xlink:href=\"#x\" />"
   end
 
   describe "viewBox" do
