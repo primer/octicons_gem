@@ -81,6 +81,16 @@ Width is the icon's true width. Based on the svg view box width. _Note, this doe
 
 Height is the icon's true height. Based on the svg view box height. _Note, this doesn't change if you scale it up with size options, it only is the natural height of the icon_
 
+##### `keywords`
+
+Returns an array of keywords for the icon. The data [comes from the octicons repository](https://github.com/primer/octicons/blob/master/lib/keywords.json). Consider contributing more aliases for the icons.
+
+```rb
+icon = Octicons::Octicon.new("x")
+icon.keywords
+# ["remove", "close", "delete"]
+```
+
 #### Methods
 
 ##### `to_svg`
@@ -93,44 +103,23 @@ icon.to_svg
 # <svg class="octicon octicon-x" viewBox="0 0 16 16" width="16" height="16" version="1.1" "aria-hidden"="true"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
 ```
 
-##### `keywords`
+##### `to_svg_use`
 
-Returns an array of keywords for the icon. The data [comes from the octicons repository](https://github.com/primer/octicons/blob/master/lib/keywords.json). Consider contributing more aliases for the icons.
+Returns a string of the svg tag
 
 ```rb
 icon = Octicons::Octicon.new("x")
-icon.keywords
-# ["remove", "close", "delete"]
+icon.to_svg_use
+# <svg class="octicon octicon-x" viewBox="0 0 16 16" width="16" height="16" version="1.1" "aria-hidden"="true"><use xlink:href="#x" /></svg>
 ```
 
-##### `decimal`
+##### `sprite_sheet`
 
-Returns an `Integer` representing the codepoint of the character within the font file.
-
-```rb
-icon = Octicons::Octicon.new("alert")
-icon.decimal
-# 61485
-```
-
-##### `hexadecimal`
-
-Returns an `String` representing the hexadecimal codepoint of the character within the font file.
+The Octicons class has a method that will output the svg sprite sheet that you can inline in your app.
 
 ```rb
-icon = Octicons::Octicon.new("alert")
-icon.hexadecimal
-# "f02d"
-```
-
-##### `character`
-
-Returns the unicode character of the icon. When placing this with the octicons font turned on, you'll see the icon.
-
-```rb
-icon = Octicons::Octicon.new("alert")
-icon.character
-# ""
+Octicons.sprite_sheet
+# <svg xmlns="http://www.w3.org/2000/svg"><symbol viewBox="0 0 16 16" id="alert">...</svg>
 ```
 
 ## Publishing
