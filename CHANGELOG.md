@@ -1,5 +1,9 @@
 # HEAD
 
+# 3.0.1
+
+- Fixes: project icon wasn't rendering properly
+
 # 3.0.0
 
 - Added: `to_svg_use` which will output a `<svg><use>` tag for svg spritesheets
