@@ -1,6 +1,6 @@
 # HEAD
 
-# 4.0.0
+# 4.0.1
 
 - Updating to new version of [octicons@6.0.0](https://github.com/primer/octicons/blob/master/CHANGELOG.md#600)
 
